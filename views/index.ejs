@@ -1,0 +1,45 @@
+<% include ('partials/header.ejs') %>
+
+    <div class="table-wrapper">
+        <% if (courses.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">titre</th>
+                        <th scope="col">description</th>
+                        <th scope="col">date</th>
+                        <th scope="col">addresse</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% courses.forEach((cours, index) => { %>
+                        <tr>
+                            <th scope="row"><%= cours.id_cours %></th>
+                            <td><%= cours.titre %></td>
+                            <td><%= cours.description %></td>
+                            <td><%= cours.date %></td>
+                            <td><%= cours.addresse %></td>
+                            <td>
+                                <a href="/edit/<%= cours.id_cours %>" target="_blank" rel="noopener" class="btn btn-success">Edit</a>
+                                <a href="/delete/<%= cours.id_cours %>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+
+            <div class="container">
+                <a href="/add" class="text-center">Ajoutez de nouveau <strong>cours</strong> ici</a>
+            </div>
+        <% } else { %>
+            <p class="text-center">Il y a aucun cours. Allez <a href="/add" >ici</a> pour ajouter un cours.</p>
+        <% } %>
+    </div>
+</div>
+    <script src="/public/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/public/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="/public/fa/js/all.js"></script>
+</body>
+</html>

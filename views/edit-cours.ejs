@@ -1,0 +1,31 @@
+<% include ('partials/header.ejs') %>
+<div class="container">
+    <% if (message) { %>
+        <p class="text-center text-danger"><%= message %></p>
+    <% } %>
+
+    <% if (cours !== undefined) { %>
+        <form class="add-player-form" action="" method="post" enctype="multipart/form-data">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" name="titre" id="titre" placeholder="Titre du cours" value="<%= cours.titre %>" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" name="description" id="description" value="<%= cours.description %>" placeholder="Description du cours">
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="datetime-local" class="form-control" name="date" id="date" value="<%= cours.date %>" placeholder="Date et heure du cours" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" name="addresse" id="addresse" value="<%= cours.addresse %>" placeholder="Où aura lieu le cours?" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success float-right">Update Player</button>
+        </form>
+    <% } else { %>
+        <p class="text-center">Ce cours n'éxiste pas. Ajoutez-le <a href="/add">ici</a>.</p>
+    <% } %>
+</div>
+</div>
+</body>
+</html>
